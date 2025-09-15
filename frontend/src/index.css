@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* Custom Scrollbar for elements with class .custom-scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #05556e; /* rabbit-blue */
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #033b4e; /* darker rabbit-blue on hover */
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: large;
+  scrollbar-color: #05556e #f1f1f1;
+}
+
+
+

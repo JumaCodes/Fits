@@ -20,6 +20,10 @@ const AdminHomePage = () => {
     error: ordersError
   } = useSelector((state) => state.adminOrders);
 
+  console.log("Orders from store:", orders);
+  console.log("Orders error:", ordersError);
+
+
   useEffect(() => {
     dispatch(fetchAdminProducts());
     dispatch(fetchAllOrders());

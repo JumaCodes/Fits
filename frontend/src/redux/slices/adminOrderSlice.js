@@ -62,40 +62,45 @@ const adminOrderSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => { 
         builder
-            .addCase(fetchAllOrders.pending, (state) => {
-                state.loading = true;
-                state.error = null;
-            })
-            .addCase(fetchAllOrders.fulfilled, (state, action) => {
-                state.loading = false;
-                state.orders = action.payload;
-                state.totalOrders = action.payload.length;
+          .addCase(fetchAllOrders.pending, (state) => {
+            state.loading = true;
+            state.error = null;
+          })
+          .addCase(fetchAllOrders.fulfilled, (state, action) => {
+            state.loading = false;
+            const orders = Array.isArray(action.payload) ? action.payload : [];
+            state.orders = orders;
+            state.totalOrders = orders.length;
 
-                // calculate total sales
-                const totalSales = action.payload.reduce((acc, order) => {
-                    return acc + order.totalPrice;
-                }, 0);
-                state.totalSales = totalSales;
-            })
-            .addCase(fetchAllOrders.rejected, (state, action) => {
-                state.loading = false;
-                state.error = action.payload.message;
-            })
+            state.totalSales = orders.reduce(
+              (acc, order) => acc + (order.totalPrice || 0),
+              0
+            );
+          })
+          .addCase(fetchAllOrders.rejected, (state, action) => {
+            state.loading = false;
+            state.error =
+              action.payload?.message ||
+              action.error?.message ||
+              "Failed to load orders";
+          })
 
-            // Update Order Status
-            .addCase(updateOrderStatus.fulfilled, (state, action) => {
-                const updatedOrder = action.payload;
-                const orderIndex = state.orders.findIndex(
-                    (order) => order._id === updatedOrder._id
-              );
-        if (orderIndex !== -1) {
-            state.orders[orderIndex] = updatedOrder;
-        }
-            })
-        // Delete Order
-            .addCase(deleteOrder.fulfilled, (state, action) => {
-                state.orders = state.orders.filter((order) => order._id !== action.payload);
-            })
+          // Update Order Status
+          .addCase(updateOrderStatus.fulfilled, (state, action) => {
+            const updatedOrder = action.payload;
+            const orderIndex = state.orders.findIndex(
+              (order) => order._id === updatedOrder._id
+            );
+            if (orderIndex !== -1) {
+              state.orders[orderIndex] = updatedOrder;
+            }
+          })
+          // Delete Order
+          .addCase(deleteOrder.fulfilled, (state, action) => {
+            state.orders = state.orders.filter(
+              (order) => order._id !== action.payload
+            );
+          });
     }
 });
 

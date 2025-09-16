@@ -66,13 +66,13 @@ router.put("/:id", Protect, admin, async (req, res) => {
 // @access Private/Admin
 router.delete("/:id", Protect, admin, async (req, res) => { 
     try {
-        const order = Order.findById(req.params.id);
-        if (order) {
-            await order.deleteOne();
-            res.json({ message: "Order removed" });
-        } else {
-            res.status(404).json({ message: "Order not found" });
-        }
+      const order = await Order.findById(req.params.id);
+      if (order) {
+        await order.deleteOne();
+        res.json({ message: "Order removed" });
+      } else {
+        res.status(404).json({ message: "Order not found" });
+      }      
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Server error" });

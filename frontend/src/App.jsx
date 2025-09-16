@@ -27,7 +27,7 @@ import AddProductPage from "./components/Admin/AddProduct";
 const App = () => {
   return (
     <Provider store={store}>
-      <div className="custom-scrollbar overflow-y-auto h-screen">
+      <div className="custom-scrollbar overflow-y-auto h-screen overflow-x-hidden">
         <BrowserRouter>
           <Toaster
             position="top-right"

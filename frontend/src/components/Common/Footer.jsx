@@ -101,7 +101,7 @@ const toasterOptions = (type) => {
           <ul className="space-y-2 text-gray-600">
             <li>
               <Link
-                to="#"
+                to="/collections/all?gender=Men&category=Top+Wear"
                 className="hover:text-gray-500 transition-colors hover:underline"
               >
                 Men's Top wear
@@ -109,7 +109,7 @@ const toasterOptions = (type) => {
             </li>
             <li>
               <Link
-                to="#"
+                to="/collections/all?gender=Women&category=Top+Wear"
                 className="hover:text-gray-500 transition-colors hover:underline"
               >
                 Women's Top wear
@@ -117,7 +117,7 @@ const toasterOptions = (type) => {
             </li>
             <li>
               <Link
-                to="#"
+                to="/collections/all?gender=Men&category=Bottom+Wear"
                 className="hover:text-gray-500 transition-colors hover:underline"
               >
                 Men's Bottom wear
@@ -125,7 +125,7 @@ const toasterOptions = (type) => {
             </li>
             <li>
               <Link
-                to="#"
+                to="/collections/all?gender=Women&category=Bottom+Wear"
                 className="hover:text-gray-500 transition-colors hover:underline"
               >
                 Women's Bottom wear

@@ -1,10 +1,10 @@
 {
     "version": 2,
-    "name": "fits-backend",
+    "name": "fits-frontend",
     "builds": [
         { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" }}
     ],
-    "rewrite": [
+    "rewrites": [
         { "source": "/(.*)", "destination": "/" }
     ]
 }

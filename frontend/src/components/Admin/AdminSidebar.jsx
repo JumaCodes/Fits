@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { clearCart } from "../../redux/slices/cartSlice";
+// import { clearCart } from "../../redux/slices/cartSlice";
 import { logout } from "../../redux/slices/authSlice";
 
 const AdminSidebar = () => {
@@ -18,7 +18,7 @@ const AdminSidebar = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    dispatch(clearCart());
+    // dispatch(clearCart());
     navigate("/");
   };
 
